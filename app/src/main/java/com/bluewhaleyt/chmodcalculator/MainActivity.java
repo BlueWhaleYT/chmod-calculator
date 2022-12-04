@@ -101,41 +101,29 @@ public class MainActivity extends AppCompatActivity {
     public void chmodResult() {
 
         // Owner Read
-        checkCheckBox(binding.cbUR, new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
-                intChmodDecVal += 400;
-                strChmodSymbol += "r";
-                binding.tvCode.setText(String.format("%03d", intChmodDecVal));
-                return null;
-            }
-        }, new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
-                intChmodDecVal -= 400;
-                strChmodSymbol += "-";
-                binding.tvCode.setText(String.format("%03d", intChmodDecVal));
-                return null;
-            }
+        checkCheckBox(binding.cbUR, () -> {
+            intChmodDecVal += 400;
+            strChmodSymbol += "r";
+            binding.tvCode.setText(String.format("%03d", intChmodDecVal));
+            return null;
+        }, () -> {
+            intChmodDecVal -= 400;
+            strChmodSymbol += "-";
+            binding.tvCode.setText(String.format("%03d", intChmodDecVal));
+            return null;
         });
 
         // Owner Write
-        checkCheckBox(binding.cbUW, new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
-                intChmodDecVal += 200;
-                strChmodSymbol += "w";
-                binding.tvCode.setText(String.format("%03d", intChmodDecVal));
-                return null;
-            }
-        }, new Callable<Void>() {
-            @Override
-            public Void call() throws Exception {
-                intChmodDecVal -= 200;
-                strChmodSymbol += "-";
-                binding.tvCode.setText(String.format("%03d", intChmodDecVal));
-                return null;
-            }
+        checkCheckBox(binding.cbUW, () -> {
+            intChmodDecVal += 200;
+            strChmodSymbol += "w";
+            binding.tvCode.setText(String.format("%03d", intChmodDecVal));
+            return null;
+        }, () -> {
+            intChmodDecVal -= 200;
+            strChmodSymbol += "-";
+            binding.tvCode.setText(String.format("%03d", intChmodDecVal));
+            return null;
         });
 
         // Owner Execute
